@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calorie Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dashboard-body">
+
+<nav class="navbar">
+
+  <div class="nav-left">
+    RP Fitness Portal
+  </div>
+
+  <div class="nav-center">
+    <button onclick="window.location.href='dashboard.html'">
+      Home
+    </button>
+  </div>
+
+  <div class="nav-right">
+    <button onclick="logout()">Logout</button>
+  </div>
+
+</nav>
+
+<div class="dashboard-container">
+
+  <!-- USER INPUT -->
+  <div class="dashboard-card">
+
+    <h2>User Information</h2>
+
+    <input type="number"
+           id="age"
+           placeholder="Age">
+
+    <input type="number"
+           id="height"
+           placeholder="Height (cm)">
+
+    <input type="number"
+           id="weight"
+           placeholder="Weight (kg)">
+
+    <br><br>
+
+    <select id="gender">
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+
+    <br><br>
+
+    <select id="activity">
+
+      <option value="1.2">
+        None
+      </option>
+
+      <option value="1.375">
+        Light Exercise
+      </option>
+
+      <option value="1.55">
+        Moderate Exercise
+      </option>
+
+      <option value="1.725">
+        Heavy Exercise
+      </option>
+
+    </select>
+
+    <br><br>
+
+    <button onclick="calculateFitness()">
+      Calculate
+    </button>
+
+  </div>
+
+  <!-- FITNESS DISPLAY -->
+  <div class="dashboard-card">
+
+    <h2>Fitness Summary</h2>
+
+    <p>
+      BMI:
+      <span id="bmiDisplay">-</span>
+    </p>
+
+    <p>
+      Daily Calories Needed:
+      <span id="calorieNeed">-</span>
+    </p>
+
+  </div>
+
+  <!-- FOOD INPUT -->
+  <div class="dashboard-card">
+
+    <h2>Add Food</h2>
+
+    <input type="text"
+           id="foodName"
+           placeholder="Food Name">
+
+    <input type="number"
+           id="foodCalories"
+           placeholder="Calories">
+
+    <button onclick="addFood()">
+      Add Food
+    </button>
+
+  </div>
+
+  <!-- FOOD LIST -->
+  <div class="dashboard-card">
+
+    <h2>Today's Calories</h2>
+
+    <ul id="foodList"></ul>
+
+    <hr>
+
+    <h3>
+      Total Calories:
+      <span id="totalCalories">0</span>
+    </h3>
+
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
