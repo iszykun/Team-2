@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dashboard-body">
+
+<nav class="navbar">
+
+  <div class="nav-left">
+    RP Admin Panel
+  </div>
+
+  <div class="nav-right">
+    <button onclick="logout()">
+      Logout
+    </button>
+  </div>
+
+</nav>
+
+<div class="dashboard-container">
+
+  <div class="dashboard-card admin-card">
+
+    <h2>Registered Users</h2>
+
+    <input
+      type="text"
+      id="searchUser"
+      placeholder="Search email..."
+      onkeyup="filterUsers()"
+    >
+
+    <div id="userList"></div>
+
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
