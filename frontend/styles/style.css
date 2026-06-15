@@ -391,6 +391,122 @@ p {
   color: var(--muted);
 }
 
+.calendar-header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.calendar-header h2 {
+  margin: 0;
+}
+
+.calendar-nav {
+  min-width: 120px;
+}
+
+.calendar-weekdays,
+.calendar-grid {
+  display: grid;
+}
+
+.calendar-weekdays {
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.calendar-weekdays div,
+.calendar-cell {
+  display: grid;
+  place-items: center;
+  min-height: 54px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.calendar-grid {
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.45rem;
+}
+
+.calendar-cell {
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.calendar-cell.blank {
+  background: transparent;
+  border: none;
+}
+
+.calendar-cell span {
+  display: block;
+  width: 100%;
+}
+
+.calendar-cell.green {
+  background: rgba(25, 195, 125, 0.16);
+  border-color: rgba(25, 195, 125, 0.4);
+}
+
+.calendar-cell.red {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.35);
+}
+
+.calendar-cell.neutral {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.calendar-cell.today {
+  box-shadow: 0 0 0 2px rgba(25, 195, 125, 0.75);
+  border-color: var(--green);
+}
+
+.calendar-cell:hover {
+  transform: translateY(-1px);
+}
+
+.calendar-legend {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.calendar-legend span {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--muted);
+}
+
+.legend-swatch {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.legend-swatch.green {
+  background: var(--green);
+}
+
+.legend-swatch.red {
+  background: var(--danger);
+}
+
+.legend-swatch.neutral {
+  background: #4b5b53;
+}
+
 @media (max-width: 860px) {
   .auth-shell,
   .app-shell {

@@ -3,17 +3,29 @@
     "email": "25003399@myrp.edu.sg",
     "password": "123456",
     "createdAt": "13/05/2026, 10:17:39 pm",
-    "lastLogin": "11/06/2026, 2:59:53 pm",
+    "lastLogin": "6/15/2026, 2:00:56 AM",
     "profile": null,
     "calories": {
-      "date": "2026-05-13",
-      "foods": [
-        {
-          "id": 1781161158871,
-          "name": "pizza",
-          "calories": 1111
-        }
-      ]
+      "date": "2026-06-15",
+      "foods": []
+    },
+    "goalHistory": {},
+    "calorieHistory": {
+      "2026-05-13": 1111
     }
+  },
+  {
+    "email": "25048003@myrp.edu.sg",
+    "password": "Test1234",
+    "createdAt": "6/15/2026, 1:58:48 AM",
+    "lastLogin": "6/15/2026, 1:59:24 AM",
+    "profile": null,
+    "calories": {
+      "date": "2026-06-15",
+      "foods": []
+    },
+    "goal": null,
+    "goalHistory": {},
+    "calorieHistory": {}
   }
 ]

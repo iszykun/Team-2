@@ -20,6 +20,14 @@ function setMessage(id, message, type = 'error') {
   element.className = `form-message ${type}`;
 }
 
+function setActiveSidebarLink() {
+  const currentPath = window.location.pathname;
+  document.querySelectorAll('.nav-links a').forEach((link) => {
+    const linkPath = new URL(link.href, window.location.origin).pathname;
+    link.classList.toggle('active', linkPath === currentPath);
+  });
+}
+
 async function logout() {
   await fetch('/api/auth/logout', { method: 'POST', credentials: 'same-origin' });
   sessionStorage.clear();
@@ -177,6 +185,101 @@ async function loadFoods() {
   }
 }
 
+async function loadGoalPage() {
+  if (!$('dailyGoalInput')) return;
+  renderCalendarWeekdays();
+  try {
+    const data = await apiFetch('/api/goals');
+    $('dailyGoalInput').value = data.goal !== null ? data.goal : '';
+    $('todayGoal').innerText = data.goal !== null ? `${data.goal} cal` : 'Not set';
+    $('caloriesConsumed').innerText = `${data.caloriesConsumed} cal`;
+    $('caloriesRemaining').innerText = data.goal !== null ? `${data.caloriesRemaining} cal` : '-';
+    currentGoal = data.goal;
+    await renderCalendar(currentYear, currentMonth);
+  } catch (error) {
+    setMessage('dailyGoalMessage', error.message);
+  }
+}
+
+function renderCalendarWeekdays() {
+  const header = $('calendarWeekdays');
+  if (!header) return;
+  header.innerHTML = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+    .map((day) => `<div>${day}</div>`)
+    .join('');
+}
+
+async function saveDailyGoal() {
+  const input = $('dailyGoalInput');
+  const value = input ? String(input.value).trim() : '';
+  try {
+    await apiFetch('/api/goals', { method: 'POST', body: JSON.stringify({ goal: value }) });
+    setMessage('dailyGoalMessage', 'Saved successfully', 'success');
+    await loadGoalPage();
+  } catch (error) {
+    setMessage('dailyGoalMessage', error.message);
+  }
+}
+
+function buildCalendarGrid(year, month, results, today) {
+  const calendarDays = $('calendarDays');
+  if (!calendarDays) return;
+  calendarDays.innerHTML = '';
+
+  const firstOfMonth = new Date(year, month - 1, 1);
+  const startDay = firstOfMonth.getDay();
+  const daysInMonth = new Date(year, month, 0).getDate();
+
+  for (let i = 0; i < startDay; i += 1) {
+    const blank = document.createElement('div');
+    blank.className = 'calendar-cell blank';
+    calendarDays.appendChild(blank);
+  }
+
+  for (let day = 1; day <= daysInMonth; day += 1) {
+    const dateString = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+    const cell = document.createElement('button');
+    cell.type = 'button';
+    cell.className = 'calendar-cell';
+    cell.innerHTML = `<span>${day}</span>`;
+    const result = results[dateString] || { status: 'neutral' };
+    cell.classList.add(result.status);
+    if (dateString === today) cell.classList.add('today');
+    calendarDays.appendChild(cell);
+  }
+}
+
+async function renderCalendar(year, month) {
+  const title = $('calendarTitle');
+  if (!title) return;
+  const monthName = new Date(year, month - 1, 1).toLocaleString('default', { month: 'long' });
+  title.textContent = `${monthName} ${year}`;
+
+  try {
+    const data = await apiFetch(`/api/goals/calendar?year=${year}&month=${month}`);
+    buildCalendarGrid(year, month, data.results, data.today);
+  } catch (error) {
+    setMessage('dailyGoalMessage', error.message);
+  }
+}
+
+let currentYear = new Date().getFullYear();
+let currentMonth = new Date().getMonth() + 1;
+let currentGoal = null;
+
+function changeCalendarMonth(direction) {
+  currentMonth += direction;
+  if (currentMonth < 1) {
+    currentMonth = 12;
+    currentYear -= 1;
+  }
+  if (currentMonth > 12) {
+    currentMonth = 1;
+    currentYear += 1;
+  }
+  renderCalendar(currentYear, currentMonth);
+}
+
 async function loadUsers() {
   const userList = $('userList');
   if (!userList) return;
@@ -227,7 +330,9 @@ async function overviewUser(email) {
 }
 
 window.addEventListener('load', () => {
+  setActiveSidebarLink();
   loadFoods();
   loadUsers();
   if ($('editName')) initEditFoodPage();
+  if ($('dailyGoalInput')) loadGoalPage();
 });

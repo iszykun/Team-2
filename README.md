@@ -8,6 +8,11 @@ A C270 DevOps-ready fitness tracking application with a separated frontend, stru
 - Session-based authentication
 - Admin user management with overview and delete actions
 - Calorie tracker with add, edit, delete, reset, BMI, and calorie need calculation
+- Daily Calorie Goals page with personal goal setting and editing
+- Monthly calendar view with green, red, and grey day statuses
+- Green means the calorie goal was achieved
+- Red means the calorie goal was exceeded
+- Grey means no data or a future date
 - Responsive black and green interface
 - Clear API route structure for maintainability
 - Docker Compose support for local deployment demos
@@ -19,6 +24,7 @@ frontend/
   public/
   src/
   pages/
+    DailyGoals.html
   components/
   styles/
   assets/
@@ -55,6 +61,16 @@ Open:
 http://localhost:3000/pages/login.html
 ```
 
+## Testing the Daily Calorie Goals feature
+
+1. Login as a student.
+2. Open the Dashboard and click `Daily Goals`.
+3. Enter and save a daily calorie goal between `500` and `10000`.
+4. Verify today's goal, calories consumed, and calories remaining appear.
+5. Navigate the monthly calendar to see green, red, or grey dates.
+
+Calorie goals and history persist using JSON storage in `backend/data/users.json`.
+
 You can also run from the project root:
 
 ```bash
@@ -88,6 +104,9 @@ Student accounts must use this email format:
 - `PUT /api/calories/:id`
 - `DELETE /api/calories/:id`
 - `POST /api/calories/reset`
+- `GET /api/goals`
+- `POST /api/goals`
+- `GET /api/goals/calendar`
 - `GET /api/admin/users`
 - `DELETE /api/admin/users/:email`
 - `POST /api/admin/users/overview`

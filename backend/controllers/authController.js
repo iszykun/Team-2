@@ -19,7 +19,9 @@ function signup(req, res) {
     createdAt: new Date().toLocaleString(),
     lastLogin: 'Never',
     profile: null,
-    calories: { date: getToday(), foods: [] }
+    calories: { date: getToday(), foods: [] },
+    goal: null,
+    goalHistory: {}
   });
   saveUsers(users);
   return res.status(201).json({ success: true, message: 'Account created successfully' });
@@ -38,6 +40,7 @@ function login(req, res) {
   user.lastLogin = new Date().toLocaleString();
   user.calories = user.calories || { date: getToday(), foods: [] };
   user.calories.foods = Array.isArray(user.calories.foods) ? user.calories.foods : [];
+  user.goalHistory = typeof user.goalHistory === 'object' && user.goalHistory !== null ? user.goalHistory : {};
   saveUsers(users);
   return res.json({ success: true, user: sanitizeUser(user) });
 }

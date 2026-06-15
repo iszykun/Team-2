@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Calorie Goals</title>
+  <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body class="app-body">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <img src="/assets/images/rp-logo.png" alt="RP logo">
+        <div><strong>RP Fitness</strong><span>Goal Tracker</span></div>
+      </div>
+      <nav class="nav-links">
+        <a href="/pages/dashboard.html">Dashboard</a>
+        <a href="/pages/CalorieTracker.html">Calories</a>
+        <a href="/pages/DailyGoals.html">Daily Goals</a>
+        <button onclick="logout()">Logout</button>
+      </nav>
+    </aside>
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <span class="eyebrow">Daily goals</span>
+          <h1>Daily Calorie Goals</h1>
+          <p>Set a goal, review today’s intake, and watch your monthly calorie progress.</p>
+        </div>
+        <button class="secondary-button" onclick="window.location.href='/pages/dashboard.html'">Return to Dashboard</button>
+      </header>
+      <section class="grid">
+        <article class="card span-5">
+          <h2>Goal summary</h2>
+          <div class="form-stack">
+            <label for="dailyGoalInput">Daily calorie goal</label>
+            <input type="number" id="dailyGoalInput" min="500" max="10000" placeholder="Enter 500 - 10000">
+            <button type="button" onclick="saveDailyGoal()">Save goal</button>
+            <p id="dailyGoalMessage" class="form-message"></p>
+          </div>
+          <div class="metric"><span>Today's Goal</span><strong id="todayGoal">-</strong></div>
+          <div class="metric"><span>Calories Consumed</span><strong id="caloriesConsumed">0</strong></div>
+          <div class="metric"><span>Calories Remaining</span><strong id="caloriesRemaining">-</strong></div>
+        </article>
+        <article class="card span-7">
+          <div class="calendar-header">
+            <button class="secondary-button calendar-nav" type="button" onclick="changeCalendarMonth(-1)">Previous</button>
+            <div>
+              <h2 id="calendarTitle">Month</h2>
+              <p>Green dates are within goal, red dates are over your goal, and grey means no history yet.</p>
+            </div>
+            <button class="secondary-button calendar-nav" type="button" onclick="changeCalendarMonth(1)">Next</button>
+          </div>
+          <div class="calendar-weekdays" id="calendarWeekdays"></div>
+          <div class="calendar-grid" id="calendarDays"></div>
+          <div class="calendar-legend">
+            <span><span class="legend-swatch green"></span>Within goal</span>
+            <span><span class="legend-swatch red"></span>Exceeded goal</span>
+            <span><span class="legend-swatch neutral"></span>No data / future</span>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+  <script src="/src/app.js"></script>
+</body>
+</html>

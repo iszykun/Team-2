@@ -6,6 +6,7 @@ const cors = require('cors');
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const calorieRoutes = require('./routes/calorieRoutes');
+const dailyGoalsRoutes = require('./routes/dailyGoalsRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const authController = require('./controllers/authController');
 const calorieController = require('./controllers/calorieController');
@@ -31,12 +32,13 @@ app.use(session({
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/calories', calorieRoutes);
+app.use('/api/goals', dailyGoalsRoutes);
 app.use('/api/admin', adminRoutes);
 
 app.use(express.static(frontendRoot));
 app.get('/', (req, res) => res.redirect('/pages/login.html'));
 
-['login.html', 'signup.html', 'dashboard.html', 'admin.html', 'CalorieTracker.html', 'EditFood.html'].forEach((page) => {
+['login.html', 'signup.html', 'dashboard.html', 'admin.html', 'CalorieTracker.html', 'EditFood.html', 'DailyGoals.html'].forEach((page) => {
   app.get(`/${page}`, (req, res) => res.sendFile(path.join(pagesRoot, page)));
 });
 
