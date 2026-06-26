@@ -1,43 +1,20 @@
-# RP Fitness Full-Stack App
+# Team-2 Daily Habit Checklist
 
-A C270 DevOps-ready fitness tracking application with a separated frontend, structured Express backend, JSON storage, and Docker support.
+A daily habit tracking system that helps users track their calorie goals and fitness workouts with a ranking system.
 
-## Features
+## 🚀 Features
 
-- RP student signup and login validation
-- Session-based authentication
-- Admin user management with overview and delete actions
-- Calorie tracker with add, edit, delete, reset, BMI, and calorie need calculation
-- Responsive black and green interface
-- Clear API route structure for maintainability
-- Docker Compose support for local deployment demos
+- ✅ **Daily Checklist** - Track 2 habits daily: Calorie Goal & Fitness Workout
+- 📊 **Progress Tracking** - See your completion percentage in real-time
+- 🏆 **Ranking System** - Earn ranks based on consistency:
+  - Iron (0-25%)
+  - Bronze (26-50%)
+  - Silver (51-75%)
+  - Gold (76-100%)
+- 📅 **Monthly View** - Track your progress throughout the month
+- 💾 **Persistent Data** - Your progress is saved automatically
 
-## Project Structure
-
-```text
-frontend/
-  public/
-  src/
-  pages/
-  components/
-  styles/
-  assets/
-backend/
-  server.js
-  routes/
-  controllers/
-  models/
-  middleware/
-  data/
-docker/
-  Dockerfile.backend
-  Dockerfile.frontend
-Dockerfile
-docker-compose.yml
-.env.example
-.gitignore
-README.md
-```
+---
 
 ## Local Setup
 
@@ -74,25 +51,6 @@ Student accounts must use this email format:
 
 ```text
 25000000@myrp.edu.sg
-```
-
-## API Routes
-
-- `POST /api/auth/signup`
-- `POST /api/auth/login`
-- `GET /api/auth/session`
-- `POST /api/auth/logout`
-- `GET /api/users/me`
-- `GET /api/calories/profile`
-- `POST /api/calories`
-- `PUT /api/calories/:id`
-- `DELETE /api/calories/:id`
-- `POST /api/calories/reset`
-- `GET /api/admin/users`
-- `DELETE /api/admin/users/:email`
-- `POST /api/admin/users/overview`
-
-Legacy routes such as `/login.html`, `/signup`, `/login`, `/get-profile`, `/add-food`, and `/get-users` are still supported for compatibility.
 
 ## Docker
 
@@ -116,3 +74,4 @@ The Compose file mounts `backend/data` so JSON data persists outside the contain
 - Store real deployment secrets using your CI/CD platform secrets, based on `.env.example`.
 - Keep work in feature branches and use pull requests for GitHub collaboration evidence.
 - JSON storage is intentionally simple for the assignment; the model layer can be replaced by a database later without rewriting routes or UI code.
+
