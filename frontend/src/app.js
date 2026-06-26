@@ -60,123 +60,6 @@ async function signup() {
   }
 }
 
-function calculateFitness() {
-  const age = Number($('age').value);
-  const height = Number($('height').value);
-  const weight = Number($('weight').value);
-  const gender = $('gender').value;
-  const activity = Number($('activity').value);
-  if (!age || !height || !weight) {
-    setMessage('trackerMessage', 'Complete age, height, and weight first.');
-    return;
-  }
-  const bmi = weight / ((height / 100) ** 2);
-  const bmr = gender === 'female'
-    ? (10 * weight) + (6.25 * height) - (5 * age) - 161
-    : (10 * weight) + (6.25 * height) - (5 * age) + 5;
-  $('bmiDisplay').innerText = bmi.toFixed(2);
-  $('calorieNeed').innerText = Math.round(bmr * activity);
-  setMessage('trackerMessage', '', 'success');
-}
-
-async function addFood() {
-  try {
-    await apiFetch('/api/calories', {
-      method: 'POST',
-      body: JSON.stringify({ name: $('foodName').value.trim(), calories: $('foodCalories').value })
-    });
-    $('foodName').value = '';
-    $('foodCalories').value = '';
-    await loadFoods();
-  } catch (error) {
-    setMessage('foodMessage', error.message);
-  }
-}
-
-function goEditFood(id) {
-  sessionStorage.setItem('editFoodId', id);
-  window.location.href = '/pages/EditFood.html';
-}
-
-async function initEditFoodPage() {
-  const id = sessionStorage.getItem('editFoodId');
-  if (!id) {
-    window.location.href = '/pages/CalorieTracker.html';
-    return;
-  }
-  try {
-    const data = await apiFetch('/api/calories/profile');
-    const food = data.calories.foods.find((item) => String(item.id) === String(id));
-    if (!food) {
-      setMessage('editMessage', 'Food entry not found.');
-      return;
-    }
-    $('editName').value = food.name;
-    $('editCalories').value = food.calories;
-  } catch (error) {
-    setMessage('editMessage', error.message);
-  }
-}
-
-async function saveEdit() {
-  const id = sessionStorage.getItem('editFoodId');
-  try {
-    await apiFetch(`/api/calories/${id}`, {
-      method: 'PUT',
-      body: JSON.stringify({ name: $('editName').value.trim(), calories: $('editCalories').value })
-    });
-    window.location.href = '/pages/CalorieTracker.html';
-  } catch (error) {
-    setMessage('editMessage', error.message);
-  }
-}
-
-function cancelEdit() {
-  window.location.href = '/pages/CalorieTracker.html';
-}
-
-async function deleteEdit() {
-  const id = sessionStorage.getItem('editFoodId');
-  if (!confirm('Delete this food entry?')) return;
-  try {
-    await apiFetch(`/api/calories/${id}`, { method: 'DELETE' });
-    window.location.href = '/pages/CalorieTracker.html';
-  } catch (error) {
-    setMessage('editMessage', error.message);
-  }
-}
-
-async function resetFoods() {
-  if (!confirm('Reset all food entries for today?')) return;
-  try {
-    await apiFetch('/api/calories/reset', { method: 'POST' });
-    await loadFoods();
-  } catch (error) {
-    setMessage('foodMessage', error.message);
-  }
-}
-
-async function loadFoods() {
-  const foodList = $('foodList');
-  if (!foodList) return;
-  try {
-    const data = await apiFetch('/api/calories/profile');
-    foodList.innerHTML = '';
-    let total = 0;
-    if (!data.calories.foods.length) foodList.innerHTML = '<li class="empty-state">No food added yet.</li>';
-    data.calories.foods.forEach((food) => {
-      const li = document.createElement('li');
-      li.className = 'food-item';
-      li.innerHTML = `<span><strong>${food.name}</strong><small>${food.calories} cal</small></span><button class="icon-button" onclick="goEditFood(${food.id})">Edit</button>`;
-      foodList.appendChild(li);
-      total += Number(food.calories || 0);
-    });
-    $('totalCalories').innerText = total;
-  } catch (error) {
-    setMessage('foodMessage', error.message);
-  }
-}
-
 async function loadUsers() {
   const userList = $('userList');
   if (!userList) return;
@@ -220,7 +103,7 @@ async function overviewUser(email) {
   try {
     const data = await apiFetch('/api/admin/users/overview', { method: 'POST', body: JSON.stringify({ email }) });
     const overview = data.overview;
-    $('overviewPanel').innerHTML = `<h3>${overview.email}</h3><dl class="overview-list"><div><dt>Created</dt><dd>${overview.createdAt}</dd></div><div><dt>Last login</dt><dd>${overview.lastLogin}</dd></div><div><dt>Foods today</dt><dd>${overview.foodCount}</dd></div><div><dt>Total calories</dt><dd>${overview.totalCalories}</dd></div></dl>`;
+    $('overviewPanel').innerHTML = `<h3>${overview.email}</h3><dl class="overview-list"><div><dt>Created</dt><dd>${overview.createdAt}</dd></div><div><dt>Last login</dt><dd>${overview.lastLogin}</dd></div></dl>`;
   } catch (error) {
     alert(error.message);
   }
@@ -228,8 +111,6 @@ async function overviewUser(email) {
 
 if (typeof window !== 'undefined') {
   window.addEventListener('load', () => {
-    loadFoods();
     loadUsers();
-    if ($('editName')) initEditFoodPage();
   });
 }
