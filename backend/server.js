@@ -5,10 +5,8 @@ const cors = require('cors');
 
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
-const calorieRoutes = require('./routes/calorieRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const authController = require('./controllers/authController');
-const calorieController = require('./controllers/calorieController');
 const adminController = require('./controllers/adminController');
 const { requireSession } = require('./middleware/helpers');
 
@@ -30,13 +28,12 @@ app.use(session({
 
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
-app.use('/api/calories', calorieRoutes);
 app.use('/api/admin', adminRoutes);
 
 app.use(express.static(frontendRoot));
 app.get('/', (req, res) => res.redirect('/pages/login.html'));
 
-['login.html', 'signup.html', 'dashboard.html', 'admin.html', 'CalorieTracker.html', 'EditFood.html'].forEach((page) => {
+['login.html', 'signup.html', 'dashboard.html', 'admin.html', 'DailyHabits.html'].forEach((page) => {
   app.get(`/${page}`, (req, res) => res.sendFile(path.join(pagesRoot, page)));
 });
 
@@ -44,11 +41,6 @@ app.post('/signup', authController.signup);
 app.post('/login', authController.login);
 app.get('/check-session', authController.checkSession);
 app.get('/logout', authController.logout);
-app.get('/get-profile', requireSession, calorieController.getProfile);
-app.post('/add-food', requireSession, calorieController.addFood);
-app.post('/edit-food', requireSession, calorieController.editFood);
-app.post('/delete-food', requireSession, calorieController.deleteFood);
-app.post('/reset-foods', requireSession, calorieController.resetFoods);
 app.get('/get-users', adminController.getUsers);
 app.post('/delete-user', adminController.deleteUser);
 app.post('/user-overview', adminController.userOverview);
