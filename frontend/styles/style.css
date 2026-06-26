@@ -66,6 +66,31 @@ button:hover {
   transform: translateY(-1px);
 }
 
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.button-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 44px;
+  border-radius: 8px;
+  padding: 0.78rem 1rem;
+  background: var(--green);
+  color: #04100a;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.button-link:hover {
+  background: var(--green-2);
+  text-decoration: none;
+}
+
 input,
 select {
   width: 100%;
@@ -387,8 +412,160 @@ p {
   text-align: right;
 }
 
-.empty-state {
+..empty-state {
   color: var(--muted);
+}
+
+.tracker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.tracker-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  background: rgba(25, 195, 125, 0.14);
+  color: var(--green);
+  font-weight: 900;
+}
+
+.tracker-summary {
+  margin-bottom: 1rem;
+}
+
+.progress-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.progress-figure {
+  display: grid;
+  text-align: right;
+}
+
+.progress-figure strong {
+  color: var(--green);
+  font-size: 1.3rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  border-radius: 999px;
+  background: #18231d;
+  overflow: hidden;
+}
+
+.progress-bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--green), var(--green-2));
+}
+
+.habit-list {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.habit-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #0d140f;
+}
+
+.habit-item strong {
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.habit-item small {
+  display: block;
+  color: var(--muted);
+}
+
+.habit-item input {
+  width: 20px;
+  height: 20px;
+  min-height: auto;
+  accent-color: var(--green);
+}
+
+.tracker-calendar-card {
+  margin-top: 1rem;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.calendar-legend {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 0.35rem;
+}
+
+.legend-dot.complete { background: var(--green); }
+.legend-dot.partial { background: var(--warning); }
+.legend-dot.empty { background: #33423a; }
+
+.tracker-calendar {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.45rem;
+}
+
+.day-cell {
+  min-height: 54px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  border: 1px solid var(--line);
+  background: #0c130f;
+}
+
+.day-cell.complete {
+  background: rgba(25, 195, 125, 0.2);
+  color: var(--green);
+}
+
+.day-cell.partial {
+  background: rgba(245, 158, 11, 0.18);
+  color: #ffd58a;
+}
+
+.day-cell.today {
+  outline: 2px solid var(--green);
 }
 
 @media (max-width: 860px) {
@@ -420,10 +597,17 @@ p {
   }
 
   .topbar,
+  .tracker-header,
+  .calendar-header,
+  .progress-row,
   .food-item,
   .user-row {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .tracker-calendar {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .grid {

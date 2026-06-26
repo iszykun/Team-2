@@ -226,8 +226,10 @@ async function overviewUser(email) {
   }
 }
 
-window.addEventListener('load', () => {
-  loadFoods();
-  loadUsers();
-  if ($('editName')) initEditFoodPage();
-});
+if (typeof window !== 'undefined') {
+  window.addEventListener('load', () => {
+    loadFoods();
+    loadUsers();
+    if ($('editName')) initEditFoodPage();
+  });
+}

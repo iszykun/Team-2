@@ -1,19 +1,13 @@
 [
   {
     "email": "25003399@myrp.edu.sg",
-    "password": "123456",
-    "createdAt": "13/05/2026, 10:17:39 pm",
-    "lastLogin": "11/06/2026, 2:59:53 pm",
+    "password": "testing",
+    "createdAt": "6/26/2026, 6:51:07 AM",
+    "lastLogin": "6/26/2026, 6:58:18 AM",
     "profile": null,
     "calories": {
-      "date": "2026-05-13",
-      "foods": [
-        {
-          "id": 1781161158871,
-          "name": "pizza",
-          "calories": 1111
-        }
-      ]
+      "date": "2026-06-26",
+      "foods": []
     }
   }
 ]
