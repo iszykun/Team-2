@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Food</title>
+  <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body class="app-body">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <img src="/assets/images/rp-logo.png" alt="RP logo">
+        <div><strong>RP Fitness</strong><span>Edit Entry</span></div>
+      </div>
+      <nav class="nav-links">
+        <a href="/pages/dashboard.html">Dashboard</a>
+        <a href="/pages/CalorieTracker.html">Calories</a>
+        <a href="/pages/DailyGoals.html">Daily Goals</a>
+        <button onclick="logout()">Logout</button>
+      </nav>
+    </aside>
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <span class="eyebrow">Food entry</span>
+          <h1>Edit Food</h1>
+          <p>Update or remove a saved food item from today's calorie list.</p>
+        </div>
+      </header>
+      <section class="grid">
+        <article class="card span-6">
+          <h2>Food Details</h2>
+          <div class="form-stack">
+            <input type="text" id="editName" placeholder="Food name">
+            <input type="number" id="editCalories" placeholder="Calories">
+            <button onclick="saveEdit()">Save Changes</button>
+            <button class="secondary-button" onclick="cancelEdit()">Cancel</button>
+            <button class="danger-button" onclick="deleteEdit()">Delete</button>
+            <p id="editMessage" class="form-message"></p>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+  <script src="/src/app.js"></script>
+</body>
+</html>
