@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "East Coast Gym",
+    "type": "gym",
+    "lat": 1.435,
+    "lng": 103.785,
+    "public": true
+  },
+  {
+    "id": 2,
+    "name": "Jalan Besar",
+    "type": "gym",
+    "lat": 1.3024,
+    "lng": 103.855,
+    "public": false
+  },
+  {
+    "id": 3,
+    "name": "Jurong East",
+    "type": "track",
+    "lat": 1.3336,
+    "lng": 103.743,
+    "public": false
+  },
+  {
+    "id": 4,
+    "name": "Pioneer Track",
+    "type": "track",
+    "lat": 1.437,
+    "lng": 103.789,
+    "public": true
+  },
+  {
+    "id": 5,
+    "name": "Clementi Fitness Centre",
+    "type": "gym",
+    "lat": 1.3156,
+    "lng": 103.764,
+    "public": true
+  },
+  {
+    "id": 6,
+    "name": "North Loop Track",
+    "type": "track",
+    "lat": 1.4388,
+    "lng": 103.7898,
+    "public": true
+  }
+]

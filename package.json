@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node backend/server.js",
     "dev": "node backend/server.js",
-    "test": "node --check backend/server.js"
+    "test": "jest backend/routes/facilities.test.js"
   },
   "keywords": [
     "devops",
@@ -20,5 +20,8 @@
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "express-session": "^1.19.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }
