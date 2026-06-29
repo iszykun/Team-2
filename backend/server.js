@@ -8,6 +8,7 @@ const userRoutes = require('./routes/userRoutes');
 const calorieRoutes = require('./routes/calorieRoutes');
 const dailyGoalsRoutes = require('./routes/dailyGoalsRoutes');
 const adminRoutes = require('./routes/adminRoutes');
+const facilitiesRoutes = require('./routes/facilities');
 const authController = require('./controllers/authController');
 const calorieController = require('./controllers/calorieController');
 const adminController = require('./controllers/adminController');
@@ -34,6 +35,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/calories', calorieRoutes);
 app.use('/api/goals', dailyGoalsRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/facilities', facilitiesRoutes);
 
 app.use(express.static(frontendRoot));
 app.get('/', (req, res) => res.redirect('/pages/login.html'));
