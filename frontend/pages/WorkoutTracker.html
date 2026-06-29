@@ -33,16 +33,55 @@
         <article class="card span-6">
           <h2>Log a workout</h2>
           <form id="workoutForm" onsubmit="event.preventDefault(); saveWorkout();" class="form-stack">
+            <label for="workoutType">Workout type</label>
+            <select id="workoutType" required>
+              <option value="">Select workout type</option>
+              <option value="Gym / Weightlifting">Gym / Weightlifting</option>
+              <option value="Running">Running</option>
+              <option value="Cycling">Cycling</option>
+              <option value="Swimming">Swimming</option>
+              <option value="Yoga / Stretching">Yoga / Stretching</option>
+              <option value="Other">Other</option>
+            </select>
+            <div id="typeSpecificFields"></div>
             <input id="workoutExercise" placeholder="Exercise name" required>
             <input id="workoutDuration" type="number" min="1" step="1" placeholder="Duration (min)" required>
             <input id="workoutCalories" type="number" min="1" step="1" placeholder="Calories burned" required>
             <input id="workoutDate" type="date" required>
+            <label for="workoutDifficulty">Difficulty</label>
+            <select id="workoutDifficulty" required>
+              <option value="">Select difficulty</option>
+              <option value="Easy">Easy</option>
+              <option value="Medium">Medium</option>
+              <option value="Hard">Hard</option>
+            </select>
+            <label for="workoutMood">Mood before workout</label>
+            <select id="workoutMood" required>
+              <option value="">Select mood</option>
+              <option value="😴 Tired">😴 Tired</option>
+              <option value="😐 Okay">😐 Okay</option>
+              <option value="💪 Energized">💪 Energized</option>
+            </select>
+            <label for="workoutNotes">Notes</label>
+            <textarea id="workoutNotes" rows="3" placeholder="Add any notes or reflection"></textarea>
+            <label for="workoutTags">Tags</label>
+            <input id="workoutTags" placeholder="#legday #cardio #pb">
             <button type="submit">Save workout</button>
             <p id="workoutMessage" class="form-message"></p>
           </form>
         </article>
         <article class="card span-6">
           <h2>Workout history</h2>
+          <label for="workoutFilter">Filter by type</label>
+          <select id="workoutFilter" onchange="filterWorkouts()">
+            <option value="All">All</option>
+            <option value="Gym / Weightlifting">Gym / Weightlifting</option>
+            <option value="Running">Running</option>
+            <option value="Cycling">Cycling</option>
+            <option value="Swimming">Swimming</option>
+            <option value="Yoga / Stretching">Yoga / Stretching</option>
+            <option value="Other">Other</option>
+          </select>
           <ul id="workoutList" class="food-list"></ul>
         </article>
       </section>

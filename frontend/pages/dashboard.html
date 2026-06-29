@@ -41,6 +41,18 @@
           <div><h2>Daily Goals</h2><p>Keep your target calories and habits visible in one place.</p></div>
           <button onclick="window.location.href='/pages/DailyGoals.html'">Open Goals</button>
         </article>
+        <article class="card span-4">
+          <h2>Workout stats</h2>
+          <ul class="food-list">
+            <li class="food-item"><span><strong>This week</strong><small>Workouts</small></span><span id="weeklyWorkouts">0</span></li>
+            <li class="food-item"><span><strong>This week</strong><small>Calories</small></span><span id="weeklyCalories">0</span></li>
+            <li class="food-item"><span><strong>Streak</strong><small>Consecutive days</small></span><span id="workoutStreak">0</span></li>
+          </ul>
+        </article>
+        <article class="card span-8">
+          <h2>Personal bests</h2>
+          <ul id="personalBests" class="food-list"></ul>
+        </article>
         <article class="card span-12">
           <h2>Recent workouts</h2>
           <ul id="dashboardWorkouts" class="food-list"></ul>
