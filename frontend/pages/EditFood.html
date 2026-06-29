@@ -11,18 +11,27 @@
     <aside class="sidebar">
       <div class="sidebar-brand">
         <img src="/assets/images/rp-logo.png" alt="RP logo">
+<<<<<<< HEAD
         <div><strong>RP Fitness</strong><span>Edit Entry</span></div>
       </div>
       <nav class="nav-links">
         <a href="/pages/dashboard.html">Dashboard</a>
         <a href="/pages/CalorieTracker.html">Calories</a>
         <a href="/pages/DailyGoals.html">Daily Goals</a>
+=======
+        <div><strong>RP Fitness</strong><span>Student Portal</span></div>
+      </div>
+      <nav class="nav-links">
+        <a href="/pages/dashboard.html">Dashboard</a>
+        <a href="/pages/CalorieTracker.html" class="active">Calories</a>
+>>>>>>> 8bc3a3c (feat: implement workout tracker - add, edit, delete, dashboard, validation)
         <button onclick="logout()">Logout</button>
       </nav>
     </aside>
     <main class="main-content">
       <header class="topbar">
         <div>
+<<<<<<< HEAD
           <span class="eyebrow">Food entry</span>
           <h1>Edit Food</h1>
           <p>Update or remove a saved food item from today's calorie list.</p>
@@ -40,6 +49,23 @@
             <p id="editMessage" class="form-message"></p>
           </div>
         </article>
+=======
+          <span class="eyebrow">Edit entry</span>
+          <h1>Update food entry</h1>
+        </div>
+      </header>
+      <section class="card span-12">
+        <div class="form-stack">
+          <input id="editName" placeholder="Food name">
+          <input id="editCalories" type="number" min="1" step="1" placeholder="Calories">
+          <div class="row-actions">
+            <button onclick="saveEdit()">Save</button>
+            <button class="secondary-button" onclick="cancelEdit()">Cancel</button>
+            <button class="danger-button" onclick="deleteEdit()">Delete</button>
+          </div>
+          <p id="editMessage" class="form-message"></p>
+        </div>
+>>>>>>> 8bc3a3c (feat: implement workout tracker - add, edit, delete, dashboard, validation)
       </section>
     </main>
   </div>

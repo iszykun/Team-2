@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
   <title>Admin Dashboard</title>
+=======
+  <title>RP Fitness Admin</title>
+>>>>>>> 8bc3a3c (feat: implement workout tracker - add, edit, delete, dashboard, validation)
   <link rel="stylesheet" href="/styles/style.css">
 </head>
 <body class="app-body">
@@ -11,11 +15,18 @@
     <aside class="sidebar">
       <div class="sidebar-brand">
         <img src="/assets/images/rp-logo.png" alt="RP logo">
+<<<<<<< HEAD
         <div><strong>RP Admin</strong><span>Management</span></div>
       </div>
       <nav class="nav-links">
         <a href="/pages/admin.html">Users</a>
         <a href="/pages/login.html">Login</a>
+=======
+        <div><strong>RP Fitness</strong><span>Admin Portal</span></div>
+      </div>
+      <nav class="nav-links">
+        <a href="/pages/admin.html" class="active">Admin</a>
+>>>>>>> 8bc3a3c (feat: implement workout tracker - add, edit, delete, dashboard, validation)
         <button onclick="logout()">Logout</button>
       </nav>
     </aside>
@@ -23,6 +34,7 @@
       <header class="topbar">
         <div>
           <span class="eyebrow">Administration</span>
+<<<<<<< HEAD
           <h1>User Management</h1>
           <p>Review registered accounts, inspect activity, and remove test users.</p>
         </div>
@@ -40,6 +52,20 @@
           <div id="overviewPanel">
             <p class="empty-state">Select a user overview to see account details.</p>
           </div>
+=======
+          <h1>User management</h1>
+          <p>Review and manage student accounts.</p>
+        </div>
+      </header>
+      <section class="grid">
+        <article class="card span-12">
+          <input id="searchUser" placeholder="Search users" oninput="filterUsers()">
+          <div id="userList" class="form-stack"></div>
+        </article>
+        <article class="card span-12">
+          <h2>User details</h2>
+          <div id="overviewPanel"></div>
+>>>>>>> 8bc3a3c (feat: implement workout tracker - add, edit, delete, dashboard, validation)
         </article>
       </section>
     </main>

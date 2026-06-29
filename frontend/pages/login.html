@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="/styles/style.css">
 </head>
 <body class="auth-body">
+<<<<<<< HEAD
   <main class="auth-shell">
     <section class="auth-panel">
       <img src="/assets/images/rp-logo.png" class="logo" alt="Republic Polytechnic logo">
@@ -27,6 +28,27 @@
       <p>Includes Express API routes, JSON-backed data storage, Docker files, and a responsive black and green interface.</p>
     </section>
   </main>
+=======
+  <div class="auth-shell">
+    <section class="auth-panel">
+      <span class="eyebrow">Student access</span>
+      <h1>Welcome back</h1>
+      <p>Sign in to your fitness dashboard and keep your training on track.</p>
+      <div class="form-stack">
+        <input id="loginEmail" placeholder="Email">
+        <input id="loginPassword" type="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+        <p id="loginMessage" class="form-message"></p>
+      </div>
+      <p>New here? <a href="/pages/signup.html">Create an account</a></p>
+    </section>
+    <section class="auth-panel brand-panel">
+      <img class="logo" src="/assets/images/rp-logo.png" alt="RP logo">
+      <h2>Build healthy habits with RP Fitness</h2>
+      <p>Track meals, calories, goals, and now workouts in one place.</p>
+    </section>
+  </div>
+>>>>>>> 8bc3a3c (feat: implement workout tracker - add, edit, delete, dashboard, validation)
   <script src="/src/app.js"></script>
 </body>
 </html>

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿const express = require('express');
+=======
+const express = require('express');
+>>>>>>> 8bc3a3c (feat: implement workout tracker - add, edit, delete, dashboard, validation)
 const calorieController = require('../controllers/calorieController');
 const { requireSession } = require('../middleware/helpers');
 const router = express.Router();

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿const { readUsers, saveUsers, sanitizeUser } = require('../models/userModel');
+=======
+const { readUsers, saveUsers, sanitizeUser } = require('../models/userModel');
+>>>>>>> 8bc3a3c (feat: implement workout tracker - add, edit, delete, dashboard, validation)
 const { getToday, isValidRpEmail, normalizeEmail } = require('../middleware/helpers');
 
 function signup(req, res) {
@@ -21,7 +25,12 @@ function signup(req, res) {
     profile: null,
     calories: { date: getToday(), foods: [] },
     goal: null,
+<<<<<<< HEAD
     goalHistory: {}
+=======
+    goalHistory: {},
+    workouts: []
+>>>>>>> 8bc3a3c (feat: implement workout tracker - add, edit, delete, dashboard, validation)
   });
   saveUsers(users);
   return res.status(201).json({ success: true, message: 'Account created successfully' });
@@ -41,6 +50,10 @@ function login(req, res) {
   user.calories = user.calories || { date: getToday(), foods: [] };
   user.calories.foods = Array.isArray(user.calories.foods) ? user.calories.foods : [];
   user.goalHistory = typeof user.goalHistory === 'object' && user.goalHistory !== null ? user.goalHistory : {};
+<<<<<<< HEAD
+=======
+  user.workouts = Array.isArray(user.workouts) ? user.workouts : [];
+>>>>>>> 8bc3a3c (feat: implement workout tracker - add, edit, delete, dashboard, validation)
   saveUsers(users);
   return res.json({ success: true, user: sanitizeUser(user) });
 }

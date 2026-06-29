@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿const { readUsers, saveUsers } = require('../models/userModel');
+=======
+const { readUsers, saveUsers } = require('../models/userModel');
+>>>>>>> 8bc3a3c (feat: implement workout tracker - add, edit, delete, dashboard, validation)
 const { getToday, normalizeEmail } = require('../middleware/helpers');
 
 function findSessionUser(users, email) {

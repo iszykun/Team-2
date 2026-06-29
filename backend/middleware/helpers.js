@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿function getToday() {
+=======
+function getToday() {
+>>>>>>> 8bc3a3c (feat: implement workout tracker - add, edit, delete, dashboard, validation)
   return new Date().toISOString().split('T')[0];
 }
 

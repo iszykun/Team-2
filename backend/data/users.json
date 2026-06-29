@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [
   {
     "email": "25003399@myrp.edu.sg",
@@ -29,3 +30,6 @@
     "calorieHistory": {}
   }
 ]
+=======
+[]
+>>>>>>> 8bc3a3c (feat: implement workout tracker - add, edit, delete, dashboard, validation)

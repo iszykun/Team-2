@@ -164,6 +164,112 @@ async function resetFoods() {
   }
 }
 
+<<<<<<< HEAD
+=======
+let editingWorkoutId = null;
+
+function resetWorkoutForm() {
+  editingWorkoutId = null;
+  $('workoutExercise').value = '';
+  $('workoutDuration').value = '';
+  $('workoutCalories').value = '';
+  $('workoutDate').value = '';
+  const submitButton = document.querySelector('#workoutForm button[type="submit"]');
+  if (submitButton) submitButton.textContent = 'Save workout';
+}
+
+function populateWorkoutForm(workout) {
+  editingWorkoutId = workout.id;
+  $('workoutExercise').value = workout.exerciseName || '';
+  $('workoutDuration').value = workout.duration || '';
+  $('workoutCalories').value = workout.caloriesBurned || '';
+  $('workoutDate').value = workout.date || '';
+  const submitButton = document.querySelector('#workoutForm button[type="submit"]');
+  if (submitButton) submitButton.textContent = 'Update workout';
+  $('workoutExercise').focus();
+}
+
+async function saveWorkout() {
+  const payload = {
+    exerciseName: $('workoutExercise').value.trim(),
+    duration: $('workoutDuration').value,
+    caloriesBurned: $('workoutCalories').value,
+    date: $('workoutDate').value
+  };
+
+  try {
+    const data = editingWorkoutId
+      ? await apiFetch(`/api/workouts/${editingWorkoutId}`, { method: 'PUT', body: JSON.stringify({ ...payload, id: editingWorkoutId }) })
+      : await apiFetch('/api/workouts', { method: 'POST', body: JSON.stringify(payload) });
+    setMessage('workoutMessage', data.message || 'Workout saved successfully', 'success');
+    resetWorkoutForm();
+    await loadWorkouts();
+    await loadDashboardWorkouts();
+  } catch (error) {
+    setMessage('workoutMessage', error.message);
+  }
+}
+
+function editWorkout(workout) {
+  populateWorkoutForm(workout);
+}
+
+async function loadWorkouts() {
+  const workoutList = $('workoutList');
+  if (!workoutList) return;
+  try {
+    const data = await apiFetch('/api/workouts');
+    workoutList.innerHTML = '';
+    if (!data.workouts.length) {
+      workoutList.innerHTML = '<li class="empty-state">No workouts logged yet.</li>';
+      return;
+    }
+
+    data.workouts.forEach((workout) => {
+      const li = document.createElement('li');
+      li.className = 'food-item';
+      li.innerHTML = `<span><strong>${workout.exerciseName}</strong><small>${workout.duration} min • ${workout.caloriesBurned} cal • ${workout.date}</small></span><div class="row-actions"><button class="secondary-button" onclick='editWorkout(${JSON.stringify(workout)})'>Edit</button><button class="danger-button" onclick="deleteWorkout(${workout.id})">Delete</button></div>`;
+      workoutList.appendChild(li);
+    });
+  } catch (error) {
+    setMessage('workoutMessage', error.message);
+  }
+}
+
+async function deleteWorkout(id) {
+  if (!confirm('Delete this workout entry?')) return;
+  try {
+    const data = await apiFetch(`/api/workouts/${id}`, { method: 'DELETE' });
+    setMessage('workoutMessage', data.message || 'Workout deleted successfully', 'success');
+    await loadWorkouts();
+    await loadDashboardWorkouts();
+  } catch (error) {
+    setMessage('workoutMessage', error.message);
+  }
+}
+
+async function loadDashboardWorkouts() {
+  const dashboardList = $('dashboardWorkouts');
+  if (!dashboardList) return;
+  try {
+    const data = await apiFetch('/api/workouts');
+    dashboardList.innerHTML = '';
+    if (!data.workouts.length) {
+      dashboardList.innerHTML = '<li class="empty-state">No workout history yet.</li>';
+      return;
+    }
+    data.workouts.slice(0, 3).forEach((workout) => {
+      const li = document.createElement('li');
+      li.className = 'food-item';
+      li.innerHTML = `<span><strong>${workout.exerciseName}</strong><small>${workout.duration} min • ${workout.caloriesBurned} cal</small></span><span>${workout.date}</span>`;
+      dashboardList.appendChild(li);
+    });
+  } catch (error) {
+    dashboardList.innerHTML = `<li class="empty-state">${error.message}</li>`;
+  }
+}
+
+>>>>>>> 8bc3a3c (feat: implement workout tracker - add, edit, delete, dashboard, validation)
 async function loadFoods() {
   const foodList = $('foodList');
   if (!foodList) return;
@@ -332,6 +438,11 @@ async function overviewUser(email) {
 window.addEventListener('load', () => {
   setActiveSidebarLink();
   loadFoods();
+<<<<<<< HEAD
+=======
+  loadWorkouts();
+  loadDashboardWorkouts();
+>>>>>>> 8bc3a3c (feat: implement workout tracker - add, edit, delete, dashboard, validation)
   loadUsers();
   if ($('editName')) initEditFoodPage();
   if ($('dailyGoalInput')) loadGoalPage();

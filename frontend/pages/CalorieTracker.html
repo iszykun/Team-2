@@ -11,11 +11,20 @@
     <aside class="sidebar">
       <div class="sidebar-brand">
         <img src="/assets/images/rp-logo.png" alt="RP logo">
+<<<<<<< HEAD
         <div><strong>RP Fitness</strong><span>Nutrition Tools</span></div>
       </div>
       <nav class="nav-links">
         <a href="/pages/dashboard.html">Dashboard</a>
         <a href="/pages/CalorieTracker.html">Calories</a>
+=======
+        <div><strong>RP Fitness</strong><span>Student Portal</span></div>
+      </div>
+      <nav class="nav-links">
+        <a href="/pages/dashboard.html">Dashboard</a>
+        <a href="/pages/CalorieTracker.html" class="active">Calories</a>
+        <a href="/pages/WorkoutTracker.html">Workouts</a>
+>>>>>>> 8bc3a3c (feat: implement workout tracker - add, edit, delete, dashboard, validation)
         <a href="/pages/DailyGoals.html">Daily Goals</a>
         <button onclick="logout()">Logout</button>
       </nav>
@@ -23,6 +32,7 @@
     <main class="main-content">
       <header class="topbar">
         <div>
+<<<<<<< HEAD
           <span class="eyebrow">Daily intake</span>
           <h1>Calorie Tracker</h1>
           <p>Calculate your needs, log food, and keep today's total up to date.</p>
@@ -69,6 +79,31 @@
           <h2>Today's Calories</h2>
           <ul id="foodList" class="food-list"></ul>
           <div class="metric"><span>Total Calories</span><strong id="totalCalories">0</strong></div>
+=======
+          <span class="eyebrow">Nutrition</span>
+          <h1>Calorie Tracker</h1>
+          <p>Log meals and keep your daily energy intake visible.</p>
+        </div>
+      </header>
+      <section class="grid">
+        <article class="card span-6">
+          <h2>Add food</h2>
+          <div class="form-stack">
+            <input id="foodName" placeholder="Food name">
+            <input id="foodCalories" type="number" min="1" step="1" placeholder="Calories">
+            <button onclick="addFood()">Add food</button>
+            <p id="foodMessage" class="form-message"></p>
+          </div>
+        </article>
+        <article class="card span-6">
+          <h2>Today&apos;s entries</h2>
+          <ul id="foodList" class="food-list"></ul>
+          <div class="metric">
+            <span>Total</span>
+            <strong id="totalCalories">0</strong>
+          </div>
+          <button class="danger-button" onclick="resetFoods()">Reset today</button>
+>>>>>>> 8bc3a3c (feat: implement workout tracker - add, edit, delete, dashboard, validation)
         </article>
       </section>
     </main>

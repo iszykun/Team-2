@@ -7,6 +7,10 @@ const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const calorieRoutes = require('./routes/calorieRoutes');
 const dailyGoalsRoutes = require('./routes/dailyGoalsRoutes');
+<<<<<<< HEAD
+=======
+const workoutRoutes = require('./routes/workoutRoutes');
+>>>>>>> 8bc3a3c (feat: implement workout tracker - add, edit, delete, dashboard, validation)
 const adminRoutes = require('./routes/adminRoutes');
 const authController = require('./controllers/authController');
 const calorieController = require('./controllers/calorieController');
@@ -33,12 +37,20 @@ app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/calories', calorieRoutes);
 app.use('/api/goals', dailyGoalsRoutes);
+<<<<<<< HEAD
+=======
+app.use('/api/workouts', workoutRoutes);
+>>>>>>> 8bc3a3c (feat: implement workout tracker - add, edit, delete, dashboard, validation)
 app.use('/api/admin', adminRoutes);
 
 app.use(express.static(frontendRoot));
 app.get('/', (req, res) => res.redirect('/pages/login.html'));
 
+<<<<<<< HEAD
 ['login.html', 'signup.html', 'dashboard.html', 'admin.html', 'CalorieTracker.html', 'EditFood.html', 'DailyGoals.html'].forEach((page) => {
+=======
+['login.html', 'signup.html', 'dashboard.html', 'admin.html', 'CalorieTracker.html', 'EditFood.html', 'DailyGoals.html', 'WorkoutTracker.html'].forEach((page) => {
+>>>>>>> 8bc3a3c (feat: implement workout tracker - add, edit, delete, dashboard, validation)
   app.get(`/${page}`, (req, res) => res.sendFile(path.join(pagesRoot, page)));
 });
 

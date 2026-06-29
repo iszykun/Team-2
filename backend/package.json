@@ -7,7 +7,11 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
+<<<<<<< HEAD
     "test": "node --check server.js"
+=======
+    "test": "node --test tests/*.test.js && node --check server.js"
+>>>>>>> 8bc3a3c (feat: implement workout tracker - add, edit, delete, dashboard, validation)
   },
   "dependencies": {
     "cors": "^2.8.6",

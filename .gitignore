@@ -1,7 +1,12 @@
 node_modules/
+<<<<<<< HEAD
 npm-debug.log*
 .env
 .DS_Store
 coverage/
 dist/
 backend/data/*.bak
+=======
+.env
+.DS_Store
+>>>>>>> 8bc3a3c (feat: implement workout tracker - add, edit, delete, dashboard, validation)

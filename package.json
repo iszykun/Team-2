@@ -6,7 +6,11 @@
   "scripts": {
     "start": "node backend/server.js",
     "dev": "node backend/server.js",
+<<<<<<< HEAD
     "test": "node --check backend/server.js"
+=======
+    "test": "node --test backend/tests/*.test.js && node --check backend/server.js"
+>>>>>>> 8bc3a3c (feat: implement workout tracker - add, edit, delete, dashboard, validation)
   },
   "keywords": [
     "devops",
