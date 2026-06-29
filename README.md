@@ -105,40 +105,36 @@ Ansible Deployment
 ## 📁 Repository Structure
 
 ```text
-project-root/
-│
+Team-2/
+├── .dockerignore
+├── .env.example
+├── .git/
+├── .gitignore
 ├── backend/
-│   ├── server.js
 │   ├── controllers/
-│   │   ├── authController.js
-│   │   ├── userController.js
-│   │   └── adminController.js
-│   │
-│   ├── models/
-│   │   └── userModel.js
-│   │
-│   ├── routes/
-│   │   ├── authRoutes.js
-│   │   ├── userRoutes.js
-│   │   └── adminRoutes.js
-│   │
+│   ├── data/
 │   ├── middleware/
-│   │   └── helpers.js
-│   │
-│   └── data/
-│       └── users.json
-│
+│   ├── models/
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── routes/
+│   └── server.js
+├── docker/
+│   ├── Dockerfile.backend
+│   └── Dockerfile.frontend
+├── docker-compose.yml
+├── Dockerfile
 ├── frontend/
+│   ├── assets/
 │   ├── pages/
-│   └── static/
-│
-├── devops/
-│   ├── Dockerfile
-│   ├── docker-compose.yml
-│   ├── Jenkinsfile
-│   └── ansible/
-│
-└── README.md
+│   ├── public/
+│   ├── src/
+│   └── styles/
+├── index.js
+├── package-lock.json
+├── package.json
+├── README.md
+└── Team-2/  (empty)
 ```
 
 ---
