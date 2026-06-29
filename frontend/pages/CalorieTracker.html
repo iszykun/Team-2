@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calorie Tracker</title>
+  <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body class="app-body">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <img src="/assets/images/rp-logo.png" alt="RP logo">
+        <div><strong>RP Fitness</strong><span>Student Portal</span></div>
+      </div>
+      <nav class="nav-links">
+        <a href="/pages/dashboard.html">Dashboard</a>
+        <a href="/pages/CalorieTracker.html" class="active">Calories</a>
+        <a href="/pages/WorkoutTracker.html">Workouts</a>
+        <a href="/pages/DailyGoals.html">Daily Goals</a>
+        <button onclick="logout()">Logout</button>
+      </nav>
+    </aside>
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <span class="eyebrow">Nutrition</span>
+          <h1>Calorie Tracker</h1>
+          <p>Log meals and keep your daily energy intake visible.</p>
+        </div>
+      </header>
+      <section class="grid">
+        <article class="card span-6">
+          <h2>Add food</h2>
+          <div class="form-stack">
+            <input id="foodName" placeholder="Food name">
+            <input id="foodCalories" type="number" min="1" step="1" placeholder="Calories">
+            <button onclick="addFood()">Add food</button>
+            <p id="foodMessage" class="form-message"></p>
+          </div>
+        </article>
+        <article class="card span-6">
+          <h2>Today&apos;s entries</h2>
+          <ul id="foodList" class="food-list"></ul>
+          <div class="metric">
+            <span>Total</span>
+            <strong id="totalCalories">0</strong>
+          </div>
+          <button class="danger-button" onclick="resetFoods()">Reset today</button>
+        </article>
+      </section>
+    </main>
+  </div>
+  <script src="/src/app.js"></script>
+</body>
+</html>

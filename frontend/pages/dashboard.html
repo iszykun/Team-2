@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RP Fitness Dashboard</title>
+  <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body class="app-body">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <img src="/assets/images/rp-logo.png" alt="RP logo">
+        <div><strong>RP Fitness</strong><span>Student Portal</span></div>
+      </div>
+      <nav class="nav-links">
+        <a href="/pages/dashboard.html">Dashboard</a>
+        <a href="/pages/CalorieTracker.html">Calories</a>
+        <a href="/pages/DailyGoals.html">Daily Goals</a>
+        <button onclick="logout()">Logout</button>
+      </nav>
+    </aside>
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <span class="eyebrow">Overview</span>
+          <h1>Dashboard</h1>
+          <p>Track healthy habits and access your student wellness tools.</p>
+        </div>
+      </header>
+      <section class="grid">
+        <article class="card action-card span-4">
+          <div><h2>Calorie Tracker</h2><p>Log meals, calculate totals, and edit food entries.</p></div>
+          <button onclick="window.location.href='/pages/CalorieTracker.html'">Open Tracker</button>
+        </article>
+        <article class="card action-card span-4">
+          <div><h2>Workout Tracker</h2><p>Log exercise sessions, review history, and track calories burned.</p></div>
+          <button onclick="window.location.href='/pages/WorkoutTracker.html'">Open Tracker</button>
+        </article>
+        <article class="card action-card span-4">
+          <div><h2>Daily Goals</h2><p>Keep your target calories and habits visible in one place.</p></div>
+          <button onclick="window.location.href='/pages/DailyGoals.html'">Open Goals</button>
+        </article>
+        <article class="card span-12">
+          <h2>Recent workouts</h2>
+          <ul id="dashboardWorkouts" class="food-list"></ul>
+        </article>
+      </section>
+    </main>
+  </div>
+  <script src="/src/app.js"></script>
+</body>
+</html>

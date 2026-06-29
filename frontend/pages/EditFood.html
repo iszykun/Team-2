@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Food</title>
+  <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body class="app-body">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <img src="/assets/images/rp-logo.png" alt="RP logo">
+        <div><strong>RP Fitness</strong><span>Student Portal</span></div>
+      </div>
+      <nav class="nav-links">
+        <a href="/pages/dashboard.html">Dashboard</a>
+        <a href="/pages/CalorieTracker.html" class="active">Calories</a>
+        <button onclick="logout()">Logout</button>
+      </nav>
+    </aside>
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <span class="eyebrow">Edit entry</span>
+          <h1>Update food entry</h1>
+        </div>
+      </header>
+      <section class="card span-12">
+        <div class="form-stack">
+          <input id="editName" placeholder="Food name">
+          <input id="editCalories" type="number" min="1" step="1" placeholder="Calories">
+          <div class="row-actions">
+            <button onclick="saveEdit()">Save</button>
+            <button class="secondary-button" onclick="cancelEdit()">Cancel</button>
+            <button class="danger-button" onclick="deleteEdit()">Delete</button>
+          </div>
+          <p id="editMessage" class="form-message"></p>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="/src/app.js"></script>
+</body>
+</html>
