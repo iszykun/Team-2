@@ -15,6 +15,7 @@ const { requireSession } = require('./middleware/helpers');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const HOST = process.env.HOST || '0.0.0.0';
 const SESSION_SECRET = process.env.SESSION_SECRET || 'rp-fitness-dev-secret';
 const frontendRoot = path.join(__dirname, '..', 'frontend');
 const pagesRoot = path.join(frontendRoot, 'pages');
@@ -64,6 +65,6 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500).json({ success: false, message: err.message || 'Server error' });
 });
 
-app.listen(PORT, () => {
-  console.log(`RP Fitness running at http://localhost:${PORT}/pages/login.html`);
+app.listen(PORT, HOST, () => {
+  console.log(`RP Fitness running at http://${HOST}:${PORT}/pages/login.html`);
 });
