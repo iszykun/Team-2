@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workout Tracker</title>
+  <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body class="app-body">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <img src="/assets/images/rp-logo.png" alt="RP logo">
+        <div><strong>RP Fitness</strong><span>Student Portal</span></div>
+      </div>
+      <nav class="nav-links">
+        <a href="/pages/dashboard.html">Dashboard</a>
+        <a href="/pages/CalorieTracker.html">Calories</a>
+        <a href="/pages/WorkoutTracker.html" class="active">Workouts</a>
+        <a href="/pages/DailyGoals.html">Daily Goals</a>
+        <button onclick="logout()">Logout</button>
+      </nav>
+    </aside>
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <span class="eyebrow">Fitness logs</span>
+          <h1>Workout Tracker</h1>
+          <p>Record sessions, edit entries, and review your workout history.</p>
+        </div>
+      </header>
+      <section class="grid">
+        <article class="card span-6">
+          <h2>Log a workout</h2>
+          <form id="workoutForm" onsubmit="event.preventDefault(); saveWorkout();" class="form-stack">
+            <input id="workoutExercise" placeholder="Exercise name" required>
+            <input id="workoutDuration" type="number" min="1" step="1" placeholder="Duration (min)" required>
+            <input id="workoutCalories" type="number" min="1" step="1" placeholder="Calories burned" required>
+            <input id="workoutDate" type="date" required>
+            <button type="submit">Save workout</button>
+            <p id="workoutMessage" class="form-message"></p>
+          </form>
+        </article>
+        <article class="card span-6">
+          <h2>Workout history</h2>
+          <ul id="workoutList" class="food-list"></ul>
+        </article>
+      </section>
+    </main>
+  </div>
+  <script src="/src/app.js"></script>
+</body>
+</html>

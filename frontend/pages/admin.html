@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RP Fitness Admin</title>
+  <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body class="app-body">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <img src="/assets/images/rp-logo.png" alt="RP logo">
+        <div><strong>RP Fitness</strong><span>Admin Portal</span></div>
+      </div>
+      <nav class="nav-links">
+        <a href="/pages/admin.html" class="active">Admin</a>
+        <button onclick="logout()">Logout</button>
+      </nav>
+    </aside>
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <span class="eyebrow">Administration</span>
+          <h1>User management</h1>
+          <p>Review and manage student accounts.</p>
+        </div>
+      </header>
+      <section class="grid">
+        <article class="card span-12">
+          <input id="searchUser" placeholder="Search users" oninput="filterUsers()">
+          <div id="userList" class="form-stack"></div>
+        </article>
+        <article class="card span-12">
+          <h2>User details</h2>
+          <div id="overviewPanel"></div>
+        </article>
+      </section>
+    </main>
+  </div>
+  <script src="/src/app.js"></script>
+</body>
+</html>

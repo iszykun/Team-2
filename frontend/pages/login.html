@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RP Fitness Login</title>
+  <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body class="auth-body">
+  <div class="auth-shell">
+    <section class="auth-panel">
+      <span class="eyebrow">Student access</span>
+      <h1>Welcome back</h1>
+      <p>Sign in to your fitness dashboard and keep your training on track.</p>
+      <div class="form-stack">
+        <input id="loginEmail" placeholder="Email">
+        <input id="loginPassword" type="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+        <p id="loginMessage" class="form-message"></p>
+      </div>
+      <p>New here? <a href="/pages/signup.html">Create an account</a></p>
+    </section>
+    <section class="auth-panel brand-panel">
+      <img class="logo" src="/assets/images/rp-logo.png" alt="RP logo">
+      <h2>Build healthy habits with RP Fitness</h2>
+      <p>Track meals, calories, goals, and now workouts in one place.</p>
+    </section>
+  </div>
+  <script src="/src/app.js"></script>
+</body>
+</html>

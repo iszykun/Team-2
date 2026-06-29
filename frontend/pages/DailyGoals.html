@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Goals</title>
+  <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body class="app-body">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <img src="/assets/images/rp-logo.png" alt="RP logo">
+        <div><strong>RP Fitness</strong><span>Student Portal</span></div>
+      </div>
+      <nav class="nav-links">
+        <a href="/pages/dashboard.html">Dashboard</a>
+        <a href="/pages/CalorieTracker.html">Calories</a>
+        <a href="/pages/WorkoutTracker.html">Workouts</a>
+        <a href="/pages/DailyGoals.html" class="active">Daily Goals</a>
+        <button onclick="logout()">Logout</button>
+      </nav>
+    </aside>
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <span class="eyebrow">Habit tracking</span>
+          <h1>Daily Goals</h1>
+          <p>Set a calorie target and review your progress throughout the month.</p>
+        </div>
+      </header>
+      <section class="grid">
+        <article class="card span-6">
+          <h2>Set today's goal</h2>
+          <div class="form-stack">
+            <input id="dailyGoalInput" type="number" min="0" step="1" placeholder="Daily calorie goal">
+            <button onclick="saveDailyGoal()">Save goal</button>
+            <p id="dailyGoalMessage" class="form-message"></p>
+          </div>
+        </article>
+        <article class="card span-6">
+          <h2>Progress summary</h2>
+          <div class="metric"><span>Today's goal</span><strong id="todayGoal">-</strong></div>
+          <div class="metric"><span>Calories consumed</span><strong id="caloriesConsumed">0</strong></div>
+          <div class="metric"><span>Remaining</span><strong id="caloriesRemaining">-</strong></div>
+        </article>
+        <article class="card span-12">
+          <div class="calendar-header">
+            <h2 id="calendarTitle">Calendar</h2>
+            <div class="calendar-nav">
+              <button class="secondary-button" onclick="changeCalendarMonth(-1)">Previous</button>
+              <button onclick="changeCalendarMonth(1)">Next</button>
+            </div>
+          </div>
+          <div id="calendarWeekdays" class="calendar-weekdays"></div>
+          <div id="calendarDays" class="calendar-grid"></div>
+          <div class="calendar-legend">
+            <span><i class="legend-swatch green"></i>Goal reached</span>
+            <span><i class="legend-swatch red"></i>Over target</span>
+            <span><i class="legend-swatch neutral"></i>No goal</span>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+  <script src="/src/app.js"></script>
+</body>
+</html>
